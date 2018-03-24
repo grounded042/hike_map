@@ -5,6 +5,7 @@ This little React app will load data from different hiking trips and display it 
 
 ## getting started
 - `npm install`
+- Set your Mapbox token in the environment variable `MAPBOX_TOKEN`
 - `npm start`
 - navigate to [http://localhost:5672/](http://localhost:5672/) to see an example from a trip I took to Zion National Park.
 
