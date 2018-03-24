@@ -1,0 +1,22 @@
+{
+    "All": {
+        "detailsLocation": "details/all.json",
+        "subLabel": "2018"
+    },
+    "Day 1": {
+        "detailsLocation": "details/day_1.json",
+        "subLabel": "3/11/2018"
+    },
+    "Day 2": {
+        "detailsLocation": "details/day_2.json",
+        "subLabel": "3/12/2018"
+    },
+    "Day 3": {
+        "detailsLocation": "details/day_3.json",
+        "subLabel": "3/13/2018"
+    },
+    "Day 4": {
+        "detailsLocation": "details/day_4.json",
+        "subLabel": "3/14/2018"
+    }
+}

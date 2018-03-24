@@ -1,0 +1,17 @@
+.info-panel {
+    height: 150px;
+    width: 100%;
+
+    background-color: white;
+
+    position: absolute;
+    bottom: 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    margin-top: 10px;
+    /* -webkit-box-shadow: 10px 0 5px -2px #888; */
+             /* 0 -10px 2px black  */
+    box-shadow: 0 11px 20px 10px black;
+}
