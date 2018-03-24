@@ -132,7 +132,7 @@ export default class Map extends React.Component {
       <ReactMapGL
         ref={(map) => { this.map = map; }}
         {...viewport}
-        mapStyle={defaultMapStyle}
+        mapStyle={DEFAULT_MAP_STYLE}
         mapboxApiAccessToken={MAPBOX_TOKEN}
         onViewportChange={this._onViewportChange}
       >

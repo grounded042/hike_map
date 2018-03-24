@@ -65,8 +65,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       CONFIG_BACKEND_LOCATION: JSON.stringify(BACKEND_LOCATION),
-      CONFIG_MAPBOX_TOKEN: JSON.stringify(BACKEND_LOCATION),
-      CONFIG_MAPBOX_STYLE: JSON.stringify(BACKEND_LOCATION)
+      CONFIG_MAPBOX_TOKEN: JSON.stringify(MAPBOX_TOKEN),
+      CONFIG_MAPBOX_STYLE: JSON.stringify(MAPBOX_STYLE)
     })
   ]
 };
