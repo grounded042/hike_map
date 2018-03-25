@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
-const BACKEND_LOCATION = process.env.BACKEND_LOCATION || "";
+const BACKEND_LOCATION = process.env.BACKEND_LOCATION || "trips/";
 const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN || "";
 const MAPBOX_STYLE = process.env.MAPBOX_STYLE || "mapbox://styles/grounded042/cjehkrz116lxq2qqq1k1hlpre";
 

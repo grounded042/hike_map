@@ -14,7 +14,7 @@ function receiveTripsIndex(tripsIndex) {
 
 export function fetchTripsIndex() {
   return (dispatch) => {
-    return fetch(`${BACKEND_LOCATION}trips/index.json`)
+    return fetch(`${BACKEND_LOCATION}index.json`)
       .then(res => res.json(), eRes => console.log("error fetching trips index", eRes))
       .then(
         tripsIndex => dispatch(receiveTripsIndex(tripsIndex)),
@@ -79,7 +79,7 @@ function _fetchTripDetails(tripName) {
   return (dispatch, getState) => {
     const tripDetailsLocation = getState().hikeMap.tripsIndex[tripName].detailsLocation;
 
-    return fetch(`${BACKEND_LOCATION}trips/${tripDetailsLocation}`)
+    return fetch(`${BACKEND_LOCATION}${tripDetailsLocation}`)
       .then(res => res.json(), eRes => console.log("error fetching trip details", tripName, eRes))
       .then(tripDetails => dispatch(receiveTripDetails(tripName, tripDetails)));
   }
