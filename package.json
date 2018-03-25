@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dashboard -- webpack-dev-server --progress --profile --colors --port 5672 --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "prod": "webpack --config webpack.prod.js"
   },
   "author": "Jon Carl",
   "license": "MIT",
