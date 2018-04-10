@@ -24,10 +24,11 @@ export function fetchTripsIndex() {
 }
 
 export const SET_SELECTED_TRIP_INFO = 'SET_SELECTED_TRIP_INFO';
-function _setSelectedTrip(tripName, latitude, longitude, zoom) {
+function _setSelectedTrip(id, tripName, latitude, longitude, zoom) {
   return {
     type: SET_SELECTED_TRIP_INFO,
     payload: {
+      id,
       tripName,
       latitude,
       longitude,
@@ -65,54 +66,57 @@ export function getHeightMapShouldBe() {
 }
 
 export const RECEIVE_TRIP_DETAILS = 'RECEIVE_TRIP_DETAILS';
-function receiveTripDetails(tripName, tripDetails) {
+function receiveTripDetails(tripId, tripDetails) {
   return {
     type: RECEIVE_TRIP_DETAILS,
     payload: {
-      tripName,
+      tripId,
       tripDetails
     }
   };
 }
 
-function _fetchTripDetails(tripName) {
+function _fetchTripDetails(tripId) {
   return (dispatch, getState) => {
-    const tripDetailsLocation = getState().hikeMap.tripsIndex[tripName].detailsLocation;
+    const indexInfo = getState().hikeMap.tripsIndex.find((tripIndexInfo) => {
+      return tripIndexInfo.id === tripId;
+    });
 
-    return fetch(`${BACKEND_LOCATION}${tripDetailsLocation}`)
-      .then(res => res.json(), eRes => console.log("error fetching trip details", tripName, eRes))
-      .then(tripDetails => dispatch(receiveTripDetails(tripName, tripDetails)));
+    return fetch(`${BACKEND_LOCATION}${indexInfo.detailsLocation}`)
+      .then(res => res.json(), eRes => console.log("error fetching trip details", tripId, eRes))
+      .then(tripDetails => dispatch(receiveTripDetails(tripId, tripDetails)));
   }
 }
 
-function _calcAndSetViewportForTrip(tripName) {
+function _calcAndSetViewportForTrip(tripId) {
   return (dispatch, getState) => {
-    const outerPoints = getState().hikeMap.tripsDetailsList[tripName].outerPoints;
+    const outerPoints = getState().hikeMap.tripsDetailsList[tripId].outerPoints;
+    const tripName = getState().hikeMap.tripsDetailsList[tripId].name;
     const { width, height } = getState().hikeMap.viewport;
     const calcView = geoViewport.calcViewFromOuterPointsAndSize(outerPoints, width, height);
 
-    dispatch(_setSelectedTrip(tripName, calcView.center[1], calcView.center[0], calcView.zoom - 1));
+    dispatch(_setSelectedTrip(tripId, tripName, calcView.center[1], calcView.center[0], calcView.zoom - 1));
   }
 }
 
-function _selectTrip(tripName) {
+function _selectTrip(tripId) {
   return (dispatch, getState) => {
-    if (getState().hikeMap.tripsDetailsList.hasOwnProperty(tripName)) {
-      return dispatch(_calcAndSetViewportForTrip(tripName));
+    if (getState().hikeMap.tripsDetailsList.hasOwnProperty(tripId)) {
+      return dispatch(_calcAndSetViewportForTrip(tripId));
     }
 
-    return dispatch(_fetchTripDetails(tripName)).then(() => {
-      dispatch(_calcAndSetViewportForTrip(tripName));
+    return dispatch(_fetchTripDetails(tripId)).then(() => {
+      dispatch(_calcAndSetViewportForTrip(tripId));
     });
   };
 }
 
-export function navigateToTrip(tripName) {
+export function navigateToTrip(tripId) {
   return (dispatch) => {
-    return dispatch(fetchTripsIndex()).then(() => dispatch(_selectTrip(tripName)));
+    return dispatch(fetchTripsIndex()).then(() => dispatch(_selectTrip(tripId)));
   };
 }
 
-export function buildLayerName(tripName) {
-  return `layer_${tripName.trim().replace(" ", "_")}`;
+export function buildLayerName(tripId) {
+  return `layer_${tripId.trim().replace(" ", "_")}`;
 }

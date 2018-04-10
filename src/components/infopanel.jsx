@@ -11,13 +11,13 @@ const InfoPanel = ({
 }) => (
   <div className="info-panel">
     {
-      Object.keys(index).map(tripName => (
+      index.map(trip => (
         <InfoCard
-          key={tripName}
-          label={tripName}
-          subLabel={index[tripName].subLabel}
-          selected={selectedTrip == tripName}
-          onClick={() => onSelectTrip(tripName)}
+          key={trip.index}
+          label={trip.label}
+          subLabel={trip.subLabel}
+          selected={selectedTrip == trip.id}
+          onClick={() => onSelectTrip(trip.id)}
         />
       ))
     }
@@ -25,7 +25,7 @@ const InfoPanel = ({
 );
 
 InfoPanel.propTypes = {
-  index: PropTypes.object.isRequired,
+  index: PropTypes.array.isRequired,
   selectedTrip: PropTypes.string.isRequired,
   onSelectTrip: PropTypes.func.isRequired
 };

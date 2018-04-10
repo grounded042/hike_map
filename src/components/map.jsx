@@ -14,6 +14,7 @@ const DEFAULT_MAP_STYLE = CONFIG_MAPBOX_STYLE;
 export default class Map extends React.Component {
   static propTypes = {
     tripName: PropTypes.string.isRequired,
+    tripId: PropTypes.string.isRequired,
     coordinates: PropTypes.array.isRequired,
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
@@ -45,11 +46,11 @@ export default class Map extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const prevLayerId = buildLayerName(prevProps.tripName);
-    const curLayerId = buildLayerName(this.props.tripName);
+    const prevLayerId = buildLayerName(prevProps.tripId);
+    const curLayerId = buildLayerName(this.props.tripId);
 
-    if (curLayerId !== prevLayerId && this.props.tripName !== "") {
-      if (prevProps.tripName !== "") { this._hideLayer(prevLayerId); }
+    if (curLayerId !== prevLayerId && this.props.tripId !== "") {
+      if (prevProps.tripId !== "") { this._hideLayer(prevLayerId); }
       this._addOrShowLayerWithId(curLayerId);
 
       const newViewport = {

@@ -11,8 +11,9 @@ const defaultWidth = window.innerWidth;
 const defaultHeight = window.innerHeight - 150;
 
 function hikeMap(state = {
-  tripsIndex: {},
+  tripsIndex: [],
   selectedTrip: {
+    id: "",
     tripName: "",
     details: {
       outerPoints: {},
@@ -35,8 +36,9 @@ function hikeMap(state = {
       return {
         ...state,
         selectedTrip: {
+          id: action.payload.id,
           tripName: action.payload.tripName,
-          details: state.tripsDetailsList[action.payload.tripName]
+          details: state.tripsDetailsList[action.payload.id]
         },
         viewport: {
           ...state.viewport,
@@ -46,8 +48,8 @@ function hikeMap(state = {
         }
       };
     case RECEIVE_TRIP_DETAILS:
-      const { tripName, tripDetails } = action.payload;
-      state.tripsDetailsList[tripName] = tripDetails;
+      const { tripId, tripDetails } = action.payload;
+      state.tripsDetailsList[tripId] = tripDetails;
       return state;
     case SET_WIDTH:
       return {

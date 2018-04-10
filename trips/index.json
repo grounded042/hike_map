@@ -1,22 +1,72 @@
-{
-    "All": {
-        "detailsLocation": "details/all.json",
-        "subLabel": "2018"
-    },
-    "Day 1": {
-        "detailsLocation": "details/day_1.json",
-        "subLabel": "3/11/2018"
-    },
-    "Day 2": {
-        "detailsLocation": "details/day_2.json",
-        "subLabel": "3/12/2018"
-    },
-    "Day 3": {
-        "detailsLocation": "details/day_3.json",
-        "subLabel": "3/13/2018"
-    },
-    "Day 4": {
-        "detailsLocation": "details/day_4.json",
-        "subLabel": "3/14/2018"
-    }
-}
+[
+	{
+		"index": 0,
+		"id": "636cde39-13a0-47fc-bbf3-8e3dde71db78",
+		"label": "All",
+		"subLabel": "",
+		"detailsLocation": "details/All.json"
+	},
+	{
+		"index": 1,
+		"id": "e61229b9-f5bb-4754-806d-06c8781c236e",
+		"label": "Day 1",
+		"subLabel": "04/03/2016",
+		"detailsLocation": "details/Day 1.json"
+	},
+	{
+		"index": 2,
+		"id": "f87d9392-7308-4a19-9fe5-3309e8505799",
+		"label": "Day 2",
+		"subLabel": "04/04/2016",
+		"detailsLocation": "details/Day 2.json"
+	},
+	{
+		"index": 3,
+		"id": "73033e7c-e797-4960-a6ad-99a409dbdce8",
+		"label": "Day 3",
+		"subLabel": "04/05/2016",
+		"detailsLocation": "details/Day 3.json"
+	},
+	{
+		"index": 4,
+		"id": "d7ce462e-ff68-4489-8d97-039c0cdab5b1",
+		"label": "Day 4",
+		"subLabel": "04/06/2016",
+		"detailsLocation": "details/Day 4.json"
+	},
+	{
+		"index": 5,
+		"id": "45fa8649-52b5-4590-b3f0-36a0a4b25755",
+		"label": "Day 5",
+		"subLabel": "09/02/2016",
+		"detailsLocation": "details/Day 5.json"
+	},
+	{
+		"index": 6,
+		"id": "f83be4bb-387b-4001-90d4-14650503e23d",
+		"label": "Day 6",
+		"subLabel": "09/03/2016",
+		"detailsLocation": "details/Day 6.json"
+	},
+	{
+		"index": 7,
+		"id": "e4afa1fd-cfba-4822-8348-3a50948bbb3d",
+		"label": "Day 7",
+		"subLabel": "09/04/2016",
+		"detailsLocation": "details/Day 7.json"
+	},
+	{
+		"index": 8,
+		"id": "356ac210-ca91-4f3c-ba69-9280ddd78900",
+		"label": "Day 8",
+		"subLabel": "09/05/2016",
+		"detailsLocation": "details/Day 8.json"
+	},
+	{
+		"index": 9,
+		"id": "b55d2e31-e512-4bd7-9f68-416d48ce6bcd",
+		"label": "Day 9",
+		"subLabel": "04/09/2018",
+		"detailsLocation": "details/Day 9.json"
+	}
+]

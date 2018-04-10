@@ -8,12 +8,13 @@ import { navigateToTrip, setWidth, getWidthMapShouldBe, setHeight, getHeightMapS
 
 class MapAndControls extends React.Component {
   static propTypes = {
-    tripsIndex: PropTypes.object.isRequired,
+    tripsIndex: PropTypes.array.isRequired,
     selectedTrip: PropTypes.string.isRequired,
     onSelectTrip: PropTypes.func.isRequired,
     navigateToTrip: PropTypes.func.isRequired,
 
     tripName: PropTypes.string.isRequired,
+    tripId: PropTypes.string.isRequired,
     coordinates: PropTypes.array.isRequired,
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
@@ -26,8 +27,8 @@ class MapAndControls extends React.Component {
   _navigateToTripFromLocation() {
     const search = this.props.location.search;
     const params = new URLSearchParams(search);
-    const tripName = params.get('tripName');
-    this.props.navigateToTrip(tripName);
+    const tripId = params.get('tripId');
+    this.props.navigateToTrip(tripId);
   }
 
   componentDidMount() {
@@ -48,6 +49,7 @@ class MapAndControls extends React.Component {
         <div>
           <Map
             tripName={this.props.tripName}
+            tripId={this.props.tripId}
             coordinates={this.props.coordinates}
             latitude={this.props.latitude}
             longitude={this.props.longitude}
@@ -73,6 +75,7 @@ const mapStateToProps = state => {
     selectedTrip: state.hikeMap.selectedTrip.tripName,
     coordinates: state.hikeMap.selectedTrip.details.coordinates,
     tripName: state.hikeMap.selectedTrip.tripName,
+    tripId: state.hikeMap.selectedTrip.id,
     latitude: state.hikeMap.viewport.latitude,
     longitude: state.hikeMap.viewport.longitude,
     zoom: state.hikeMap.viewport.zoom,
@@ -83,8 +86,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSelectTrip: (tripName) => dispatch(push(`?tripName=${tripName}`)),
-    navigateToTrip: (tripName) => dispatch(navigateToTrip(tripName)),
+    onSelectTrip: (tripId) => dispatch(push(`?tripId=${tripId}`)),
+    navigateToTrip: (tripId) => dispatch(navigateToTrip(tripId)),
     onResize: () => {
       dispatch(setWidth(getWidthMapShouldBe()));
       dispatch(setHeight(getHeightMapShouldBe()));
