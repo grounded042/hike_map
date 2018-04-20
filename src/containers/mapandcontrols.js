@@ -72,7 +72,7 @@ class MapAndControls extends React.Component {
 const mapStateToProps = state => {
   return {
     tripsIndex: state.hikeMap.tripsIndex,
-    selectedTrip: state.hikeMap.selectedTrip.tripName,
+    selectedTrip: state.hikeMap.selectedTrip.id,
     coordinates: state.hikeMap.selectedTrip.details.coordinates,
     tripName: state.hikeMap.selectedTrip.tripName,
     tripId: state.hikeMap.selectedTrip.id,
